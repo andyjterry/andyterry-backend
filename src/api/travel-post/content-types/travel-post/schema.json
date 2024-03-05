@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "travel_posts",
+  "info": {
+    "singularName": "travel-post",
+    "pluralName": "travel-posts",
+    "displayName": "Travel Blog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "holidayType": {
+      "type": "enumeration",
+      "enum": [
+        "Solo",
+        "Family",
+        "Partner",
+        "Group"
+      ]
+    },
+    "dateDeparted": {
+      "type": "date"
+    },
+    "dateReturn": {
+      "type": "date"
+    },
+    "mainImg": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "postImgs": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "city": {
+      "type": "string"
+    }
+  }
+}

@@ -368,24 +368,64 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     singularName: 'blog';
     pluralName: 'blogs';
     displayName: 'blog';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     title: Attribute.String;
-    published: Attribute.Boolean;
     content: Attribute.Blocks & Attribute.Required;
     datePublished: Attribute.Date;
     mainImg: Attribute.Media;
     postImg: Attribute.Media;
     slug: Attribute.UID<'api::blog.blog', 'title'>;
+    mainImgAlt: Attribute.String;
+    postImgAlt: Attribute.String;
+    intro: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTravelPostTravelPost extends Schema.CollectionType {
+  collectionName: 'travel_posts';
+  info: {
+    singularName: 'travel-post';
+    pluralName: 'travel-posts';
+    displayName: 'Travel Blog';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.Blocks;
+    holidayType: Attribute.Enumeration<['Solo', 'Family', 'Partner', 'Group']>;
+    dateDeparted: Attribute.Date;
+    dateReturn: Attribute.Date;
+    mainImg: Attribute.Media;
+    postImgs: Attribute.Media;
+    city: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::travel-post.travel-post',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::travel-post.travel-post',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -822,6 +862,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::blog.blog': ApiBlogBlog;
+      'api::travel-post.travel-post': ApiTravelPostTravelPost;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
